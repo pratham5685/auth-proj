@@ -1,0 +1,17 @@
+{
+  "name": "auth-proj",
+  "version": "1.0.0",
+  "description": "Building an End-to-End Authenticated System for Users to retrieve Information",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4"
+  }
+}

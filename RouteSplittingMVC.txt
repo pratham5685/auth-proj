@@ -1,0 +1,16 @@
+This Application follows MVC Architecture
+We separated Routes for each and every API work.
+MVC - Model, View, Controller.
+It is mainly used to keep main server js file organized while developing complex web applications.
+
+There are two ways of doing :
+1. Export app and import in other router file to utilize it.
+2. Use express.Router() , which is mainly used, but why? becoz it provides prefix option such as les say there are get apis like "/users/all" , "users/new" , we know that they have common prefix as "/users/" in it , so it can be used as prefix.
+for example : app.use("/users",userRoutes);
+
+
+In Router File :
+1. Import express.
+2. use const router = express.Router();
+3. And export this router and import it in main server file.
+
