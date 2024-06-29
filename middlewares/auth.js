@@ -1,22 +1,26 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/userModel.js')
-const isAuthenticated = async (req,res,next) =>{
-  
+const User = require('../models/userModel.js');
 
-    const {token} = req.cookies || req.header('Authorization').replace('Bearer ', '');
+const isAuthenticated = (req, res, next) => {
+    const token = req.cookies.token;
 
-    if(!token){
-        res.json({
-            success : false,
-            message : "please login first!"
-        })
-    };
+    if (!token) {
+        return res.status(401).json({
+            success: false,
+            message: 'Authentication token is missing',
+        });
+    }
 
-    const decoded = jwt.verify(token,"ccn");
-    req.user = await User.findById(decoded._id);
-    next();
-    
-
+    try {
+        const decoded = jwt.verify(token, "ccn");
+        req.user = decoded._id;
+        next();
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            message: 'Invalid token',
+        });
+    }
 };
 
 
